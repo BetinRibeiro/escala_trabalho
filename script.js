@@ -913,8 +913,7 @@
         }
 
 
-
-// Função para exportar os dados
+// Função para exportar os dados com nome no formato backup_dia_mes_ano.txt
 function exportData() {
     const employees = localStorage.getItem('employees') || '[]';
     const scales = localStorage.getItem('scales') || '[]';
@@ -923,12 +922,19 @@ function exportData() {
     const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
 
+    const now = new Date();
+    const dia = String(now.getDate()).padStart(2, '0');
+    const mes = String(now.getMonth() + 1).padStart(2, '0');
+    const ano = now.getFullYear();
+    const filename = `backup_${dia}_${mes}_${ano}.txt`;
+
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'dados.txt';
+    a.download = filename;
     a.click();
     URL.revokeObjectURL(url);
 }
+
 
 // Função para importar os dados
 function importData(event) {
