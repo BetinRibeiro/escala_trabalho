@@ -1,0 +1,19 @@
+ .calendar-day {
+            min-height: 80px;
+        }
+        .has-scale {
+            background-color: #e0f7fa;
+        }
+        .modal {
+            transition: opacity 0.3s ease;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
